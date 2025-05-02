@@ -1,0 +1,28 @@
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  
+  .search-box {
+    width: 80%;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .card {
+    width: 300px;
+    background-color: white;
+    border-width: 1px;
+  }
+
+  .card-title {
+    font-size: 18px;
+    margin: 10px;
+  }
+  

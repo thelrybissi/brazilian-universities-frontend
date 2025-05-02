@@ -1,0 +1,19 @@
+<mat-card class="card">
+  <mat-card-title class="card-title">{{ university.name }}</mat-card-title>
+  <mat-card-content class="card-content">
+    <p><strong>País:</strong> {{ university.country }}</p>
+    <p><strong>Domínios:</strong> {{ university.domains.join(', ') }}</p>
+    <ng-container *ngIf="university?.web_pages?.length; else absentLink">
+      <p>
+        <strong>Website:</strong>
+        <a [href]="university.web_pages[0]" target="_blank">
+          {{ university.web_pages[0] }}
+        </a>
+      </p>
+    </ng-container>
+
+    <ng-template #absentLink>
+      <p><strong>Website:</strong> Ausente</p>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
