@@ -11,7 +11,15 @@
 <div class="card-container">
   <mat-card class="card" *ngFor="let uni of filtered">
     <mat-card-title class="card-title">{{ uni.name }}</mat-card-title>
-    <mat-card-content>{{ uni.country }}</mat-card-content>
+    <mat-card-content>
+      {{ uni.country }}
+      <img *ngIf="uni.country === 'Brazil'" 
+           src="https://flagcdn.com/w40/br.png" 
+           alt="Bandeira do Brasil" 
+           width="20" 
+           height="15"
+           style="margin-left: 8px;" />
+    </mat-card-content>
     <mat-card-actions>
       <button mat-button color="primary" (click)="viewDetail(uni)">Ver detalhes</button>
     </mat-card-actions>
