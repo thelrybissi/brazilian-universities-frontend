@@ -1,5 +1,8 @@
 # University Frontend (Angular)
 
+Para acessar o ambiente deployado acessar link:
+https://brazilian-universities.netlify.app/
+
 ## 🚀 Rodando localmente
 ```bash
 npm install -g @angular/cli
