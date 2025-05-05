@@ -11,6 +11,7 @@
 <div class="card-container">
   <mat-card class="card" *ngFor="let uni of filtered">
     <mat-card-title class="card-title">{{ uni.name }}</mat-card-title>
+
     <mat-card-content>
       {{ uni.country }}
       <img *ngIf="uni.country === 'Brazil'" 
@@ -20,8 +21,22 @@
            height="15"
            style="margin-left: 8px;" />
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button color="primary" (click)="viewDetail(uni)">Ver detalhes</button>
+
+    <mat-card-actions class="card-actions">
+      <div *ngIf="uni.web_pages?.length; else noUrls" class="url-list">
+        <ng-container *ngFor="let url of uni.web_pages">
+          <a [href]="url" target="_blank" rel="noopener noreferrer">{{ url }}</a>
+        </ng-container>
+      </div>
+      <ng-template #noUrls>
+        <span class="url-list">Website ausente</span>
+      </ng-template>
+    
+      
     </mat-card-actions>
+
+    <div class="details-button-wrapper">
+      <button mat-button color="primary" (click)="viewDetail(uni)">Ver detalhes</button>
+    </div>
   </mat-card>
 </div>
