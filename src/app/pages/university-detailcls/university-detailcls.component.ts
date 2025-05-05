@@ -9,7 +9,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 @Component({
   selector: 'app-university-detailcls',
   standalone: true,
-  imports: [CommonModule, MatDialogModule,  MatCardModule,
+  imports: [
+    CommonModule, 
+    MatDialogModule,  
+    MatCardModule,
     MatInputModule,
     MatDialogModule,
   ],
