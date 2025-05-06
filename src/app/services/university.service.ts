@@ -24,7 +24,7 @@ export interface PaginatedResult<T> {
 })
 export class UniversityService {
 
-  private apiUrl = 'http://localhost:53651/api/Universities';
+  private apiUrl = 'https://brazilian-universities-backend-production.up.railway.app/api/Universities';
 
   async getUniversitiesAsync(page: number = 1, pageSize: number = 10): Promise<PaginatedResult<University>> {
     try {
