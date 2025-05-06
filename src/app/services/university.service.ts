@@ -12,19 +12,32 @@ export interface University {
   domains: string[];
 }
 
+export interface PaginatedResult<T> {
+  items: T[];
+  totalCount: number;
+  page: number;
+  pageSize: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class UniversityService {
 
-  private apiUrl = 'https://brazilian-universities-backend-production.up.railway.app/api/Universities';
+  private apiUrl = 'http://localhost:53651/api/Universities';
 
-  async getUniversitiesAsync(): Promise<University[]> {
+  async getUniversitiesAsync(page: number = 1, pageSize: number = 10): Promise<PaginatedResult<University>> {
     try {
-      const response = await axios.get<University[]>(this.apiUrl);
+      const response = await axios.get<PaginatedResult<University>>(this.apiUrl, {
+        params: {
+          page,
+          pageSize
+        }
+      });
+
       return response.data;
     } catch (error) {
-      console.error('Error fetching universities:', error);
+      console.error('Error fetching universities with pagination:', error);
       throw error;
     }
   }

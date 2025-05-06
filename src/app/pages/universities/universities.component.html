@@ -9,19 +9,15 @@
 </div>
 
 <div class="card-container">
-  <mat-card class="card" *ngFor="let uni of filtered">
+  <mat-card class="card" *ngFor="let uni of universities">
     <mat-card-title class="card-title">{{ uni.name }}</mat-card-title>
-
     <mat-card-content>
       {{ uni.country }}
       <img *ngIf="uni.country === 'Brazil'" 
            src="https://flagcdn.com/w40/br.png" 
            alt="Bandeira do Brasil" 
-           width="20" 
-           height="15"
-           style="margin-left: 8px;" />
+           width="20" height="15" style="margin-left: 8px;" />
     </mat-card-content>
-
     <mat-card-actions class="card-actions">
       <div *ngIf="uni.web_pages?.length; else noUrls" class="url-list">
         <ng-container *ngFor="let url of uni.web_pages">
@@ -31,12 +27,16 @@
       <ng-template #noUrls>
         <span class="url-list">Website ausente</span>
       </ng-template>
-    
-      
     </mat-card-actions>
-
     <div class="details-button-wrapper">
       <button mat-button color="primary" (click)="viewDetail(uni)">Ver detalhes</button>
     </div>
   </mat-card>
 </div>
+
+<mat-paginator
+  [length]="totalCount"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="pageChanged($event)">
+</mat-paginator>
